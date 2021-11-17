@@ -7,7 +7,7 @@ TagManager:
   - Collectables
   - Body
   - GridArea
-  - Immortality
+  - Hazard
   layers:
   - Default
   - TransparentFX

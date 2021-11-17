@@ -8,7 +8,7 @@ public class ManageScenes : MonoBehaviour
 {
     public Text highScoreLog;
 
-    private void Start()
+    private void Awake()
     {
         highScoreLog.text = "High Score: " + PlayerPrefs.GetFloat("high score");
     }

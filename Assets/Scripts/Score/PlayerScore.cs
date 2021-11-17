@@ -11,6 +11,7 @@ namespace Score
 
         public Text bodyCountLog;
         public Text scoreCountLog;
+        
         //public Text highScoreLog;
 
         private void Start()
@@ -33,14 +34,13 @@ namespace Score
             if (PlayerPrefs.GetFloat("high score") <= _scoreCount)
             {
                 HighScore();
-                //highScoreLog.text = "High Score: " + PlayerPrefs.GetFloat("high score");
             }
         }
 
         private void UpdateGUI()
         {
             bodyCountLog.text = "Body size: " + _bodyCount;
-            scoreCountLog.text = "Score: " + Math.Round(_scoreCount);
+            scoreCountLog.text = "Score: " + Math.Round(_scoreCount); //rounds the score count to whole numbers into gui.
         }
 
         private void HighScore()

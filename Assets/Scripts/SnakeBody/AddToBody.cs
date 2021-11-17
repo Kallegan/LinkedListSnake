@@ -19,6 +19,8 @@ namespace SnakeBody
             if (Collectibles.Collect)
             {
                 bodyM.AddBodyParts(body);
+                
+                
             }
         
         }

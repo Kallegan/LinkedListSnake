@@ -1,3 +1,4 @@
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -27,7 +28,7 @@ namespace SnakeBody
 
         private void Update()
         {
-            if (Triggers.GameOver)
+            if (Triggers.GameOver || _mainBody.Count <= 0)
             {
                 GameOver();
             }
@@ -45,7 +46,7 @@ namespace SnakeBody
             for (int i = _mainBody.Count - 1; i >= 0; i--)
             {
                 Instantiate(deathEffect, _mainBody[i].transform.position, quaternion.identity);
-                Destroy(gameObject, 0.1f);
+                Destroy(gameObject);
             }
         }
         void ManageBody()
@@ -68,9 +69,12 @@ namespace SnakeBody
 
         void BodyMovement()
         {
-            _mainBody[0].GetComponent<Rigidbody2D>().velocity = 
-                _mainBody[0].transform.right * moveSpeed * Time.deltaTime;
-            if (Input.GetAxis("Horizontal") != 0) //if a/d, l/r isnt 0.
+            if (_mainBody.Count >= 1) //if the body exist, add velocity.
+            {
+                _mainBody[0].GetComponent<Rigidbody2D>().velocity = 
+                    _mainBody[0].transform.right * moveSpeed * Time.deltaTime;
+            }
+            if (Input.GetAxis("Horizontal") != 0 && _mainBody.Count >= 1) //turns the head depending on turn rate.
             {
                 _mainBody[0].transform.Rotate(new Vector3
                     (0,0,-turnRate * Time.deltaTime *Input.GetAxis("Horizontal")));
@@ -78,7 +82,6 @@ namespace SnakeBody
 
             if (_mainBody.Count > 1)
             {
-            
                 for (int i = 1; i < _mainBody.Count; i++)
                 {
                     PointerManager tempPointer = _mainBody[i - 1].GetComponent<PointerManager>();
@@ -88,9 +91,9 @@ namespace SnakeBody
                 }
             }
         }
-        void ScreenWrap() //method used for screenwrapping.
+        void ScreenWrap() //method used for screenwrapping. Tried implementing my own using the same bounds as fruit spawn.
         {
-            if (Triggers.OutOfBound)
+            if (Triggers.OutOfBound && _mainBody.Count >= 1) //added body check to prevent triggers searching when dead.
             {
                 Bounds bounds = gridArea.bounds; //created bounds to check if players head is outside trigger area.
                 //check for each direction if player is crossing the 2dcollider trigger, and if so sets x/y

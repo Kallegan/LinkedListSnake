@@ -40,6 +40,13 @@ namespace SnakeBody
             PointerList.Clear();
             PointerList.Add(new Pointer(transform.position, transform.rotation));
         }
-
+        
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Hazard"))
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 } 

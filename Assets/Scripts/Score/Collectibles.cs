@@ -33,8 +33,8 @@ namespace Score
         {
             FindObjectOfType<AudioManager>().Play("Food");
             Instantiate(effect, transform.position, quaternion.identity);
-            Collect = true;
             RandomizePosition();
+            Collect = true;
         }
 
     }
