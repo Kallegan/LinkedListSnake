@@ -6,7 +6,9 @@ namespace SnakeBody
     public class AddToBody : MonoBehaviour
     {
         [SerializeField] private GameObject body;
+        [SerializeField] private GameObject tail;
 
+        public static bool addToScore;
         private BodyManager bodyM;
 
         private void Start()
@@ -14,13 +16,15 @@ namespace SnakeBody
             bodyM = GetComponent<BodyManager>();
         }
 
-        private void Update()
+        private void LateUpdate()
         {
-            if (Collectibles.Collect)
+            if (Collectibles.collect)
             {
                 bodyM.AddBodyParts(body);
-                
-                
+                bodyM.RemoveBodyTail();
+                bodyM.AddBodyParts(tail);
+                addToScore = true;
+                Collectibles.collect = false;
             }
         
         }

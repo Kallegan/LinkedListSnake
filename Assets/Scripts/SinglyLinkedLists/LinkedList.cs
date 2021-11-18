@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SnakeBody;
 
 namespace SinglyLinkedLists
 {
@@ -29,8 +30,11 @@ namespace SinglyLinkedLists
          */
         
         private Node<T> current;
-        private Node<T> head; //referense to the first node in the list.
-        private int count; //current size of the list.
+        private Node<T> head;
+        private Node<T> previous;
+
+        //referense to the first node in the list.
+        public int count; //current size of the list.
         
         //test//
         private Node<T> _headNode;
@@ -222,7 +226,7 @@ namespace SinglyLinkedLists
             return IndexOf(item) >= 0;
         }
 
-        public T Get(int index)
+       private T Get(int index)
         {
             if (index < 0)
             {
@@ -246,6 +250,7 @@ namespace SinglyLinkedLists
         }
 
     }
+    
 
 }
 

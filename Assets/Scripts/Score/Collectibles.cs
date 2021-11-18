@@ -9,7 +9,7 @@ namespace Score
     {
         public BoxCollider2D gridArea;
 
-        public static bool Collect;
+        public static bool collect;
 
         public GameObject effect;
   
@@ -31,10 +31,25 @@ namespace Score
     
         public void OnTriggerEnter2D(Collider2D other)
         {
-            FindObjectOfType<AudioManager>().Play("Food");
-            Instantiate(effect, transform.position, quaternion.identity);
-            RandomizePosition();
-            Collect = true;
+            if (collect) //if collecting while just collected, return.
+            {
+                return; 
+            }
+
+            if (other.CompareTag("Player")) //compares tag to player (the head), to do effects, new pos and change bool.
+            {
+                FindObjectOfType<AudioManager>().Play("Food");
+                Instantiate(effect, transform.position, quaternion.identity);
+                RandomizePosition();
+                collect = true;
+            }
+            else
+            {
+                RandomizePosition(); //if triggered by the body or some other tag like hazard to avoid
+                //instant collect or collects stuck in hazards.
+            }
+
+            
         }
 
     }

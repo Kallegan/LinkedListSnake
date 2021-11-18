@@ -31,8 +31,5 @@ public class ManageScenes : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
-    
-    
-    
-    
+
 }

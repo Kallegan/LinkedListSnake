@@ -23,7 +23,7 @@ namespace SnakeBody
 
         void Start()
         {
-            CreateBodySegments();
+            StartingBody();
         }
 
         private void Update()
@@ -123,14 +123,13 @@ namespace SnakeBody
                 }
             }
         }
-    
-        void CreateBodySegments()
+
+        private void StartingBody()
         {
             if (_mainBody.Empty) //set up main body (head of the snake).
             {
                 _bodySegments.Add(head);
                 _bodySegments.Add(tail);
-            
 
                 var transform1 = transform;
                 GameObject temp1 = Instantiate(_bodySegments[0], transform1.position, transform1.rotation, transform1);
@@ -146,7 +145,13 @@ namespace SnakeBody
                 _mainBody.Add(temp1);
                 _bodySegments.Remove(0);
             }
-
+        }
+        
+    
+        void CreateBodySegments()
+        
+        {
+            
             PointerManager tempPointer = _mainBody[_mainBody.Count - 1].GetComponent<PointerManager>();
             if (_segmentGrowth == 0)
             {
@@ -174,7 +179,6 @@ namespace SnakeBody
                 _bodySegments.Remove(0);
                 temp.GetComponent<PointerManager>().ClearPointerList();
                 _segmentGrowth = 0;
-
             }
         
         }
@@ -183,7 +187,11 @@ namespace SnakeBody
         {
             _bodySegments.Add(obj);
         }
-    
-    
+
+        public void RemoveBodyTail()
+        {
+            Destroy(_mainBody[_mainBody.Count+1]);
+            _mainBody.Remove(_mainBody.Count + 1);
+        }
     }
 } 

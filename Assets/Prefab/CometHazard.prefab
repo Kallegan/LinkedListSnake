@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8278168608604413562}
   - component: {fileID: 8278168608604413563}
   - component: {fileID: -3563077831407839985}
+  - component: {fileID: 9155010936216398556}
   m_Layer: 0
   m_Name: CometHazard
   m_TagString: Untagged
@@ -143,7 +144,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.6, y: 1.6}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 1.6, y: 1.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -193,3 +194,18 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &9155010936216398556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8278168608604413565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7da45df067da2e4595a6c92f5cc4c50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meteorPrefab: {fileID: 8278168608604413565}
+  gridArea: {fileID: 1991469788646049648, guid: 06e84879476699744b53a311d428139f, type: 3}
+  spawnRate: 20

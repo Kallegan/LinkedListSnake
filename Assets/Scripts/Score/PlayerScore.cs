@@ -1,4 +1,5 @@
 using System;
+using SnakeBody;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,9 +23,9 @@ namespace Score
 
         public void Update()
         {
-            if (Collectibles.Collect)
+            if (AddToBody.addToScore)
             {
-                Collectibles.Collect = false;
+                AddToBody.addToScore = false;
                 _scoreCount += 100;
                 _scoreCount *= 1.1f;
                 _bodyCount++;

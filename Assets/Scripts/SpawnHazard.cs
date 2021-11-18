@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using SinglyLinkedLists;
 using Random = UnityEngine.Random;
+using Audio;
 
 public class SpawnHazard : MonoBehaviour
 {
@@ -37,5 +38,14 @@ public class SpawnHazard : MonoBehaviour
     float y = Random.Range(bounds.min.y+1, bounds.max.y-1);
 
     transform.position = new Vector3(Mathf.Round(x), Mathf.Round(y), 0.0f);
+    }
+    
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            FindObjectOfType<AudioManager>().Play("GameOver");
+            Triggers.GameOver = true;
+        }
     }
 }
