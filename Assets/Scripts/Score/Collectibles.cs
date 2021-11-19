@@ -7,7 +7,7 @@ namespace Score
 {
     public class Collectibles : MonoBehaviour
     {
-        public BoxCollider2D gridArea;
+        public BoxCollider2D gridArea; 
 
         public static bool collect;
 

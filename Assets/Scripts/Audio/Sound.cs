@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Audio
 {
-    [System.Serializable]
+    [System.Serializable] //manages the sound files and settings.
     public class Sound
     {
         public string name;

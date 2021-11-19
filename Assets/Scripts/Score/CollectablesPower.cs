@@ -4,6 +4,8 @@ using Random = UnityEngine.Random;
 
 namespace Score
 {
+    
+    //experimented with some form of immortality but didnt complete in time. Will implement in a later stage.
     public class CollectablesPower: MonoBehaviour
     {
         public bool immortal = false;
@@ -44,7 +46,7 @@ namespace Score
         {
             Instantiate(effect, transform.position, quaternion.identity);
             immortal = true;
-            //Invoke(nameof(ResetInvulnerability), 6);
+            Invoke(nameof(ResetInvulnerability), 3); //invokes method that switches bool immortal back to false;
             Destroy(gameObject);
         }
     
@@ -52,7 +54,6 @@ namespace Score
         void ResetInvulnerability()
         {
             immortal = false;
-            Destroy(effect);
         }
 
     }

@@ -10,7 +10,7 @@ namespace Audio
 
         public static AudioManager instance;
 
-        private void Awake()
+        private void Awake() //checks if an audiomanager is in scene, and destroys to avoid multiple.
         {
             if (instance == null)
             {
@@ -22,7 +22,7 @@ namespace Audio
                 return;
             }
         
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject); 
         
             foreach (Sound s in sounds)
             {
@@ -36,12 +36,12 @@ namespace Audio
             }
         }
 
-        void Start()
+        void Start() //starts the music when starting game.
         {
             Play("Music");
         }
     
-        public void Play(string name)
+        public void Play(string name) //finds the sound in array to play.
         {
             Sound s = Array.Find(sounds, sound => sound.name == name);
             s?.source.Play(); 

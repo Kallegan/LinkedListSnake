@@ -63,8 +63,10 @@
      <Compile Include="Assets\Scripts\Audio\Sound.cs" />
      <Compile Include="Assets\Scripts\SnakeBody\AddToBody.cs" />
      <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
+     <Compile Include="Assets\Scripts\SnakeBody\SnakeStatus.cs" />
      <Compile Include="Assets\Scripts\SinglyLinkedLists\LinkedList.cs" />
      <Compile Include="Assets\Scripts\ManageScenes.cs" />
+     <Compile Include="Assets\Scripts\Score\HighScore.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.16f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

@@ -18,9 +18,8 @@ namespace SnakeBody
         private SinglyLinkedLists.LinkedList<GameObject> _bodySegments = new SinglyLinkedLists.LinkedList<GameObject>();
 
         private float _segmentGrowth = 0;
-        //test 
         public BoxCollider2D gridArea;
-
+        
         void Start()
         {
             StartingBody();
@@ -28,7 +27,7 @@ namespace SnakeBody
 
         private void Update()
         {
-            if (Triggers.GameOver || _mainBody.Count <= 0)
+            if (Triggers.gameOver || _mainBody.Count <= 0)
             {
                 GameOver();
             }
@@ -93,7 +92,7 @@ namespace SnakeBody
         }
         void ScreenWrap() //method used for screenwrapping. Tried implementing my own using the same bounds as fruit spawn.
         {
-            if (Triggers.OutOfBound && _mainBody.Count >= 1) //added body check to prevent triggers searching when dead.
+            if (Triggers.outOfBound && _mainBody.Count >= 1) //added body check to prevent triggers searching when dead.
             {
                 Bounds bounds = gridArea.bounds; //created bounds to check if players head is outside trigger area.
                 //check for each direction if player is crossing the 2dcollider trigger, and if so sets x/y
@@ -101,25 +100,25 @@ namespace SnakeBody
                 if (bounds.max.x< _mainBody[0].transform.position.x && bounds.min.y < _mainBody[0].transform.position.y)
                 {
                     _mainBody[0].transform.position = new Vector3(bounds.min.x, _mainBody[0].transform.position.y, 0.0f);
-                    Triggers.OutOfBound = false;
+                    Triggers.outOfBound = false;
                 }
             
                 if (bounds.min.x > _mainBody[0].transform.position.x && bounds.min.y < _mainBody[0].transform.position.y)
                 {
                     _mainBody[0].transform.position = new Vector3(bounds.max.x, _mainBody[0].transform.position.y, 0.0f);
-                    Triggers.OutOfBound = false;
+                    Triggers.outOfBound = false;
                 }
 
                 if (bounds.min.x<_mainBody[0].transform.position.x && bounds.min.y>_mainBody[0].transform.position.y)
                 {
                     _mainBody[0].transform.position = new Vector3(_mainBody[0].transform.position.x, bounds.max.y, 0.0f);
-                    Triggers.OutOfBound = false;
+                    Triggers.outOfBound = false;
                 }
             
                 if (bounds.max.x>_mainBody[0].transform.position.x && bounds.max.y<_mainBody[0].transform.position.y)
                 {
                     _mainBody[0].transform.position = new Vector3(_mainBody[0].transform.position.x, bounds.min.y, 0.0f);
-                    Triggers.OutOfBound = false;
+                    Triggers.outOfBound = false;
                 }
             }
         }

@@ -4,7 +4,7 @@ using SnakeBody;
 
 namespace SinglyLinkedLists
 {
-    public class LinkedList<T> : IEnumerable<T>
+    public class LinkedList<T> //very basic singly link list that takes all types.
     {
         /* Constructor:
          * [x] LinkedList() Initialises the private fields
@@ -35,67 +35,7 @@ namespace SinglyLinkedLists
 
         //referense to the first node in the list.
         public int count; //current size of the list.
-        
-        //test//
-        private Node<T> _headNode;
-        
-        public LinkedList(Node<T> current)
-        {
-            this.current = current;
-        }
-        
-        
-        private IEnumerable<Node<T>> Nodes
-        {
-            get
-            {
-                Node<T> node = _headNode;
-                while (node != null)
-                {
-                    yield return node;
-                    node = node.next;
-                }
-            }
-        }
-        
-        public LinkedList(IEnumerable<T> Items)
-        {
-            foreach (T item in Items)
-            {
-                Add(item);
-            }
-        }
-        
-        public void ForEach(Action<T> action) //adds foreach function.
-        {
-            foreach (Node<T> item in Nodes)
-            {
-                action(item.data);
-            }
-        }
-        
-        public void AddRange(IEnumerable<T> Items)
-        {
-            foreach (T item in Items)
-            {
-                Add(item);
-            }
-        }
-        
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-        
-        public IEnumerator<T> GetEnumerator()
-        {
-            foreach (Node<T> item in Nodes)
-            {
-                yield return item.data;
-            }
-        }
-        
-        //test
+
 
         public LinkedList() //Initialises the private fields.
         {
@@ -104,7 +44,7 @@ namespace SinglyLinkedLists
             count = 0;
         }
 
-        public bool Empty
+        public bool Empty 
         {
             //checks if list is empty by comparing size to 0. If empty bool empty, set bool to true, if 0<, false.
             get { return count == 0; }
@@ -126,7 +66,7 @@ namespace SinglyLinkedLists
             {
                 throw new ArgumentOutOfRangeException("Index: " + index);
             }
-            if(index > count) //if the index is bigge than the size of the list, the index will add to the new size.
+            if(index > count) //if the index is bigger than the size of the list, the index will add to the new size.
             {
                 index = count;
             }
@@ -153,7 +93,7 @@ namespace SinglyLinkedLists
             
         }
 
-        public void Add(T item)
+        public void Add(T item) //adds to the list at the current count/tail.
         {
             Add(count, item);
         }
@@ -199,13 +139,13 @@ namespace SinglyLinkedLists
             return result;
         }
 
-        public void Clear()
+        public void Clear() //sets the list head to null, and count back to 0.
         {
             head = null;
             count = 0;
         }
 
-        public int IndexOf(T item)
+        public int IndexOf(T item) //gets index of given item.
         {
             Node<T> current = head;
 
@@ -221,12 +161,12 @@ namespace SinglyLinkedLists
             return -1;
         }
 
-       public bool Contains(T item)
+       public bool Contains(T item) //checks if the list contains the spicific item using index of.
         {
             return IndexOf(item) >= 0;
         }
 
-       private T Get(int index)
+       private T Get(int index) //checks index at index location.
         {
             if (index < 0)
             {
