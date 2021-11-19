@@ -1,34 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using SnakeBody;
 
 namespace SinglyLinkedLists
 {
-    public class LinkedList<T> //very basic singly link list that takes all types.
+    public class LinkedList<T> //very basic singly link list with generic type.
     {
-        /* Constructor:
-         * [x] LinkedList() Initialises the private fields
-         *
-         * Private Fields;
-         * [x] Node head - referense to the first node in the list.
-         * [x] int size - current size of the list.
-         *
-         * public properties:
-         * [x] Empty - if the list is empty
-         * [ ] Count - how many items are in the list.
-         * [ ] Indexer - access the data like an array in different indexes.
-         *
-         * Methods:
-         * [ ] Add(int index, object o) Add an item to list at a spicified index.
-         * [ ] Add(object o) - Add an item to the end of the list.
-         * [ ] Remove(int index) - Remove the item in the list at a specified index.
-         * [ ] Clear() - CLear the list.
-         * [ ] IndexOf(object o) - gets the index of the item in the list, if nothing is found, return -1.
-         * [ ] Contains(object o) - return true of false depending if the item is found i list.
-         * [ ] Get(int index) Gets item at the specified index.
-         * 
-         */
-        
         private Node<T> current;
         private Node<T> head;
         private Node<T> previous;
@@ -60,7 +35,7 @@ namespace SinglyLinkedLists
             get { return this.Get(index); }
         }
 
-        public T Add(int index, T item) //adds to the list.
+        public T Add(int index, T item) //adds to the list at specific index location.
         {
             if (index < 0) //if index is below 0, an error will be shown.
             {
@@ -145,7 +120,7 @@ namespace SinglyLinkedLists
             count = 0;
         }
 
-        public int IndexOf(T item) //gets index of given item.
+        public int IndexOf(T item) //gets the index of the item in the list, if nothing is found, return -1.
         {
             Node<T> current = head;
 
@@ -161,12 +136,12 @@ namespace SinglyLinkedLists
             return -1;
         }
 
-       public bool Contains(T item) //checks if the list contains the spicific item using index of.
+       public bool Contains(T item) //return true of false depending if the item is found i list.
         {
             return IndexOf(item) >= 0;
         }
 
-       private T Get(int index) //checks index at index location.
+       private T Get(int index) //Gets item at the specified index.
         {
             if (index < 0)
             {
